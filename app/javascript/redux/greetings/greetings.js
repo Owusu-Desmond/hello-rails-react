@@ -1,23 +1,24 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-const GREETINGS_URL = '/api/v1/greetings';
-const FETCH_GREETING = 'greetings/fetchGreeting';
+const API_URL = 'http://localhost:3000/api/v1/greetings';
 
-export const fetchGreeting = createAsyncThunk(FETCH_GREETING , async () => {
-    const response = await fetch(GREETINGS_URL);
-    const data = await response.json();
-    return data.message;
-});
+const FETCH = 'hello-rails-react/greetings/FETCH';
 
-const initialState = { 
-    greeting: '', 
+const initialState = {
+  greeting: '',
 };
 
 export default (state = initialState, action) => {
-    switch (action.type) {
-        case `${FETCH_GREETING}/fulfilled`:
-            return { ...state, greeting: action.payload };
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case `${FETCH}/fulfilled`:
+      return { ...state, greeting: action.payload };
+    default:
+      return state;
+  }
 };
+
+export const fetchGreeting = createAsyncThunk(FETCH, async () => {
+  const response = await fetch(API_URL);
+  const data = await response.json();
+  return data.message;
+});
