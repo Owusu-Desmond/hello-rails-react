@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   end
 
   root 'root#index'
+  # get greeting
+  get '/greeting', to: 'api/v1/greetings#index'
 end

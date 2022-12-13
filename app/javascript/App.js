@@ -1,15 +1,15 @@
 import React from "react";
-import {Link, Route, Routes} from "react-router-dom";
 import Greetings from "./component/greetings";
 
 const App = () => {
   return <>
-    <h1>Hello World!</h1>
-    <h2>React + Rails</h2>
-    <Link to="/greeting">Go to greeting page</Link>
-    <Routes>
-      <Route path="/greeting" element={<Greetings/>}/>
-    </Routes>
+    <h1>React + Rails</h1>
+
+    <h2>This is my greetings to you and the world</h2>
+
+    <div style= {{border: "1px solid black", padding: "10px", color: "red"}}>
+      <Greetings/>
+    </div>
   </>
 }
 
